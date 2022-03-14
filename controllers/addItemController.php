@@ -15,9 +15,6 @@ class AddItemController extends Controller
 
     public function saveAction()
     {
-        $dbh = DatabaseConnection::getInstance();
-        $dbc = $dbh->getConnection();
-
         // creates product object based on selected type
         $className = $_POST['type'];
         $type = $className;
@@ -49,7 +46,7 @@ class AddItemController extends Controller
             // no errors -> insert record to database
             if (!isset($_SESSION['error'])) {
 
-                $db = new DatabaseActions($dbc);
+                $db = new DatabaseActions();
                 $sku = $product->getSku();
                 $name = $product->getName();
                 $price = $product->getPrice();

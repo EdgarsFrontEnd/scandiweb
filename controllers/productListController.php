@@ -15,9 +15,7 @@ class ProductListController extends Controller
 
     public function massDeleteAction()
     {
-        $dbh = DatabaseConnection::getInstance();
-        $dbc = $dbh->getConnection();
-        $db = new DatabaseActions($dbc);
+        $db = new DatabaseActions();
 
         if (isset($_POST['selected'])) {
             $id_list = array();
