@@ -35,6 +35,8 @@ class AddItemController extends Controller
             $prodProperties = $product->getPropertiesArray();
             foreach ($prodProperties as $property => $key) {
                 if (isset($_POST[$property])) {
+                    $dbh = DatabaseConnection::getInstance();
+                    $dbc = $dbh->getConnection();
                     $value = mysqli_real_escape_string($dbc, $_POST[$property]);
                     $action = 'set' . ucfirst($property);
                     $product->$action($value);
